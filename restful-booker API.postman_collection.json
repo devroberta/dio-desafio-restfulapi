@@ -1,0 +1,207 @@
+{
+	"info": {
+		"_postman_id": "b9866987-e823-4c73-98ee-8a9d112e7bd1",
+		"name": "restful-booker API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20169986"
+	},
+	"item": [
+		{
+			"name": "Auth - Create Token",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"password123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{auth}}",
+					"host": [
+						"{{auth}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Booking - GetBookingids",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/booking?firstName=Carol&lastName=louzada",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"booking"
+					],
+					"query": [
+						{
+							"key": "firstName",
+							"value": "Carol"
+						},
+						{
+							"key": "lastName",
+							"value": "louzada"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Booking - GetBooking",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/booking/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"booking",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Booking - Create Booking-raw json",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"lastname\": \"Roberta\",\r\n    \"firstname\": \"Siqueira\",\r\n    \"totalprice\": \"638,5\",\r\n    \"depositpaid\": \"true\",\r\n    \"bookingdates\": {\r\n        \"checkin\": \"2023-01-31\",\r\n        \"checkout\": \"2023-02-20\"\r\n    },\r\n    \"additionalneeds\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/booking",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"booking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Booking - Create Booking-raw xml",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/booking",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"booking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Booking - Update booking",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/booking/1?Cookie=token=",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"booking",
+						"1"
+					],
+					"query": [
+						{
+							"key": "Cookie",
+							"value": "token="
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Booking - Delete Booking",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "token=df5bdc675eff004",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/booking/1068",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"booking",
+						"1068"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic"
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "auth",
+			"value": "https://restful-booker.herokuapp.com/auth",
+			"type": "string"
+		},
+		{
+			"key": "url",
+			"value": "https://restful-booker.herokuapp.com",
+			"type": "string"
+		}
+	]
+}
